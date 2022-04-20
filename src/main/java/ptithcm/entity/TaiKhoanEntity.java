@@ -18,11 +18,14 @@ public class TaiKhoanEntity {
 	private String matkhau;
 	@Column(name = "TinhTrang")
 	private Boolean tinhtrang;
+	
 	@ManyToOne 
 	@JoinColumn(name = "MaQuyen")
 	private TenQuyenEntity tenquyen;
+	
 	@OneToOne(mappedBy = "taikhoan")
 	private NguoiDungEntity nguoidung;
+	
 	public String getTenDN() {
 		return tenDN;
 	}

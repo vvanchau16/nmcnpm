@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -16,8 +17,9 @@ import javax.persistence.Table;
 @Table(name = "NGUOIDUNG")
 public class NguoiDungEntity {
 	@Id
+	@GeneratedValue
 	@Column(name = "MaND")
-	private Integer maND;
+	private Long maND;
 	@Column(name = "SDT")
 	private String sdt;
 	@Column(name = "Email")
@@ -26,17 +28,24 @@ public class NguoiDungEntity {
 	private String diachi;
 	@Column(name = "LinkAnhDaiDien")
 	private String linkanhdaidien;
+	
 	@OneToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name = "TenDN", referencedColumnName = "TenDN")
 	private TaiKhoanEntity taikhoan;
 	
 	@OneToMany(mappedBy = "nguoidung", fetch = FetchType.EAGER)
-	private Collection<NguoiDungEntity> nguoidung;
+	private Collection<BaiVietEntity> baiviet;
 	
-	public Integer getMaND() {
+	@OneToMany(mappedBy = "nguoidung",fetch = FetchType.EAGER )
+	private Collection<ThongBaoEntity> thongbao;
+	
+	@OneToMany(mappedBy = "nguoidung",fetch = FetchType.EAGER )
+	private Collection<GopYEntity> gopy;
+	
+	public Long getMaND() {
 		return maND;
 	}
-	public void setMaND(Integer maND) {
+	public void setMaND(Long maND) {
 		this.maND = maND;
 	}
 	public String getSdt() {
@@ -69,12 +78,25 @@ public class NguoiDungEntity {
 	public void setTaikhoan(TaiKhoanEntity taikhoan) {
 		this.taikhoan = taikhoan;
 	}
-	public Collection<NguoiDungEntity> getNguoidung() {
-		return nguoidung;
+	public Collection<BaiVietEntity> getBaiviet() {
+		return baiviet;
 	}
-	public void setNguoidung(Collection<NguoiDungEntity> nguoidung) {
-		this.nguoidung = nguoidung;
+	public void setBaiviet(Collection<BaiVietEntity> baiviet) {
+		this.baiviet = baiviet;
 	}
+	public Collection<ThongBaoEntity> getThongbao() {
+		return thongbao;
+	}
+	public void setThongbao(Collection<ThongBaoEntity> thongbao) {
+		this.thongbao = thongbao;
+	}
+	public Collection<GopYEntity> getGopy() {
+		return gopy;
+	}
+	public void setGopy(Collection<GopYEntity> gopy) {
+		this.gopy = gopy;
+	}
+	
 	
 	
 }

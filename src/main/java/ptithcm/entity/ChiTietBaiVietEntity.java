@@ -13,11 +13,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CHITIETBAIVIET")
-public class ChiTietBaiVietController {
+public class ChiTietBaiVietEntity {
 	@Id
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "MaBaiViet", referencedColumnName = "MaBaiViet")
 	private BaiVietEntity baiviet;
+	
 	@Column(name = "TinhTP")
 	private String tinhtp;
 	@Column(name = "QuanHuyen")
@@ -30,6 +32,7 @@ public class ChiTietBaiVietController {
 	private Timestamp thoigianbatdau;
 	@Column(name = "ThoiGianKetThuc")
 	private Timestamp thoigianketthuc;
+	
 	public BaiVietEntity getBaiviet() {
 		return baiviet;
 	}
