@@ -1,10 +1,14 @@
 package ptithcm.entity;
 
+import java.util.Collection;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,6 +29,10 @@ public class NguoiDungEntity {
 	@OneToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name = "TenDN", referencedColumnName = "TenDN")
 	private TaiKhoanEntity taikhoan;
+	
+	@OneToMany(mappedBy = "nguoidung", fetch = FetchType.EAGER)
+	private Collection<NguoiDungEntity> nguoidung;
+	
 	public Integer getMaND() {
 		return maND;
 	}
@@ -61,5 +69,12 @@ public class NguoiDungEntity {
 	public void setTaikhoan(TaiKhoanEntity taikhoan) {
 		this.taikhoan = taikhoan;
 	}
+	public Collection<NguoiDungEntity> getNguoidung() {
+		return nguoidung;
+	}
+	public void setNguoidung(Collection<NguoiDungEntity> nguoidung) {
+		this.nguoidung = nguoidung;
+	}
+	
 	
 }

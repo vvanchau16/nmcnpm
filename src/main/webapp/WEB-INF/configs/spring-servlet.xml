@@ -17,7 +17,7 @@
 	<context:annotation-config />
 	<mvc:annotation-driven/>
 	
-<mvc:resources mapping="/resources/**" location="/resources/" />
+<mvc:resources mapping="/template/**" location="/template/" />
 	
 	<context:component-scan base-package="ptithcm.controller, ptithcm.bean"></context:component-scan>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
